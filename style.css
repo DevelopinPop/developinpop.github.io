@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    /*background: radial-gradient(circle, rgb(112, 74, 30) 0%, rgb(99, 65, 10) 100%);*/
+    margin:0;
+    background: rgb(59,0,125);
+    background: linear-gradient(100deg, #002060 0%, #370060 100%);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    overflow-x:hidden;
+    overflow-y: scroll;
+    margin-right: 0px;
+}
+.beginning {
+    transition-duration: 500ms;
+}
+.beginning:hover {
+    transform: translateY(-15%);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 50%;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: black; 
+    opacity: 0;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1e1e1e; 
+  }
+::-webkit-scrollbar-thumb:hover {
+    background: #1e1e1e; 
+}
+
+
+a:link {
+    color: rgb(190, 226, 255);
+    transition-duration: 100ms;
+    opacity: .8;
+    text-decoration: none;
+    transform: translateY(0%);
+    display: inline-block;
+    
+}
+a:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+a:visited {
+    color: rgb(184, 189, 226);
+    opacity: .8;
+    opacity: 0.7;
+}
+a:active {
+    opacity: .5;
+    transform: translateY(-2px);
+}
+
+.sidebarlink {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    color:white;
+    text-decoration: none;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+
+.navlinks:link, .navlinks:active, .navlinks:visited {
+    font-weight: 20px;
+    color:white;
+    text-decoration: none;
+}
+
+.footer {
+    background: black;
+    z-index: 99999999999999999999999999999999999999999999999999999;
+    height:200px;
+    opacity:.5;
+    filter:drop-shadow(0, 0, 50px, black);
+}
+
+.leftsidebar {
+    background:linear-gradient(315deg, #001132 20%, #23003E 60%);
+    float:left;
+    width: 200px;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    height: 100vh;
+    padding-right: 100px;
+    overflow: hidden;
+}
+
+.navbar {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    padding: 30px;
+    font-size: 20px;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    z-index: 9;
+}
+.leftsidebarheader {
+    z-index:100000000000000000000000000000;
+}
+h1 {
+    font-weight: 500;
+    font-size: 50px;
+    margin-block: 0px;
+}
+h2 {
+    font-weight: 400;
+    font-size: 40px;
+    padding: 0px;
+}
+.aaaaaa:hover{
+    display: grid;
+    transition-duration: 500ms;
+}
+.hidden {
+    opacity: 0;
+    filter:blur(5px);
+    transform: translateX(600px);
+}
+.show {
+    transition: all .5s;
+    opacity: 1;
+    filter:blur(0px);
+    transform: translateX(0%);
+}
+p {
+    font-size: 20px;
+    padding: 0px;
+}
+.content {
+    margin-top: 200px;
+    font-size: 20px;
+    display:inline-block;
+    margin-left: 350px;
+    text-align: left;
+    margin-right: 400px;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.scroll {
+    transition-duration: 1000ms;
+}
+.stretch:hover {
+    transition-duration: 500ms;
+    transform: translateY(-20px);
+}
+.stretch {
+    transition-duration: 500ms;
+    transform-origin: center;
+    transform: translateY(0px);
+}
+section {
+    border-radius: 100px;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100px
+}
+.highlight{
+    border-radius: 15px;
+    background: linear-gradient(240deg,#4678dc 10%, #8038c3 90%);
+    padding: 15px;
+    padding-left:20px;
+    width: 750px;
+    height: auto;
+}
+.arrowup {
+    transform: translateY(0px);
+    transition-duration: 200ms;
+}
+
+.arrowup:hover {
+    transform: translateY(-10px);
+    transition-duration: 200ms;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+.gradient-overlay {
+    text-align: center;
+    position: fixed;
+
+}
