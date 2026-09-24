@@ -1,7 +1,6 @@
 ---
 layout: default
 title: LaTeX Test
-mathjax: true
 permalink: /latex-test/
 ---
 
@@ -11,8 +10,9 @@ permalink: /latex-test/
 
 Kramdown's `$$...$$` syntax is used for both inline and display math — inline
 when it sits inside a sentence, display when it's alone on its own line with
-blank lines around it. MathJax (loaded only on this page, via `mathjax: true`
-in the front matter) is what actually renders it in the browser.
+blank lines around it. MathJax is loaded site-wide by default (see
+`_config.yml` and `_layouts/default.html`), so it's what actually renders
+this into real math in the browser.
 
 ## inline math
 

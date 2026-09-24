@@ -1,0 +1,13 @@
+{%- comment -%}
+Usage: {% include iframe-embed.html url="https://example.com" title="Example" height="400px" %}
+{%- endcomment -%}
+<div class="iframe-embed">
+    <a class="iframe-embed-link" href="{{ include.url }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ include.title | default: include.url }} in a new tab">&#8599;</a>
+    <iframe
+        src="{{ include.url }}"
+        title="{{ include.title | default: include.url }}"
+        style="height: {{ include.height | default: '400px' }};"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>

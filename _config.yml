@@ -28,6 +28,7 @@ defaults:
       path: ""
     values:
       layout: "default"
+      mathjax: true
 
 plugins:
   - jekyll-feed

@@ -254,3 +254,42 @@ footer.site-footer {
 }
 
 .loading { opacity: 0.6; font-style: italic; }
+
+/* embedded iframe with a corner link to open the site directly, since a lot
+   of sites (google.com included) send X-Frame-Options / CSP headers that
+   block being embedded at all — the corner link is the reliable fallback */
+.iframe-embed {
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+}
+.iframe-embed iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    background: rgba(0,0,0,0.35);
+}
+.iframe-embed-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.65);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-radius: 8px;
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.85 !important;
+    transition: transform 150ms ease, opacity 150ms ease;
+}
+.iframe-embed-link:hover {
+    opacity: 1 !important;
+    transform: translate(2px, -2px);
+}

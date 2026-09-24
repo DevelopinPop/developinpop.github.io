@@ -55,16 +55,12 @@ have it yet.)
 
 ## 5. Math / LaTeX
 
-There's a scratch page at `/latex-test/` you can open to confirm math
-rendering works. To add math to any other page or post, put `mathjax: true`
-in its front matter, then write equations using kramdown's `$$...$$` syntax:
+Math rendering (MathJax) is **on by default for every page and post** — there's
+nothing to turn on. There's a scratch page at `/latex-test/` and an example
+post at `_posts/2024-09-24-latex-post-template.md` you can copy for future
+math-heavy posts. Write equations using kramdown's `$$...$$` syntax:
 
 ```markdown
----
-title: My Post
-mathjax: true
----
-
 Inline: $$E = mc^2$$
 
 Display (on its own line, blank lines around it):
@@ -74,17 +70,36 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 ```
 
+If you ever want to turn it off for one specific page (to shave a little
+load time), add `mathjax: false` to that page's front matter.
+
+## 6. Embedding another site (iframe)
+
+Use the `iframe-embed.html` include to drop an iframe into any page or post,
+with a small arrow in the top-right corner that opens the real page in a new
+tab:
+
+```liquid
+{% raw %}{% include iframe-embed.html url="https://example.com" title="Example" height="400px" %}{% endraw %}
+```
+
+`title` and `height` are optional. See `/iframe-test/` for a working example
+(including Google, which — heads up — blocks being embedded at all via its
+`X-Frame-Options` header, so that particular box will show blank; the corner
+arrow still works regardless).
+
 ## Folder structure
 
 ```
 _config.yml       site settings
 _layouts/         page templates (default.html, post.html)
-_includes/        reusable snippets (navbar.html)
+_includes/        reusable snippets (navbar.html, iframe-embed.html)
 _posts/           your blog posts — one markdown file each
 assets/css/       stylesheet
 assets/js/        code-block language tab script
 index.md          homepage
 blog/index.md     blog listing (auto-generated from _posts)
 contact/index.md  contact page
-latex-test/index.md  scratch page for testing LaTeX rendering
+latex-test/index.md   scratch page for testing LaTeX rendering
+iframe-test/index.md  scratch page for testing the iframe embed
 ```
