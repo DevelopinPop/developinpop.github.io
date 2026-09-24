@@ -77,19 +77,24 @@ p { font-size: 18px; line-height: 1.6; }
 }
 .hero-emoji { font-size: 90px; line-height: 1; }
 
-/* fixed dark vignette: sits in front of the hero text, but because it's
-   pinned to the viewport, the next sections (given a higher z-index below)
-   slide up and cover it as the page scrolls */
+/* fixed vignette: sits in front of the hero text, but because it's pinned
+   to the viewport, the next sections (given a higher z-index below) slide
+   up and cover it as the page scrolls. Dark edge sits at the bottom of the
+   fade box (nearest the content below); it's hidden until the visitor
+   starts scrolling (see assets/js/main.js), then fades in. */
 .hero-fade {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 65vh;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.8) 100%);
     z-index: 1;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 400ms ease;
 }
+.hero-fade.visible { opacity: 1; }
 
 .scroll-arrow {
     position: absolute;
@@ -99,13 +104,11 @@ p { font-size: 18px; line-height: 1.6; }
     z-index: 2;
     font-size: 30px;
     line-height: 1;
-    opacity: 0.8 !important;
-    animation: bounce 2s infinite;
+    transition: transform 120ms ease, opacity 120ms ease;
 }
-.scroll-arrow:hover { opacity: 1 !important; }
-@keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, 8px); }
+.scroll-arrow:hover {
+    opacity: 1;
+    transform: translate(-50%, -10px);
 }
 
 section.block {
@@ -123,12 +126,16 @@ section.block {
 .card, .post-card, .blog-card {
     position: relative;
     border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: linear-gradient(240deg, rgba(70,120,220,0.25) 10%, rgba(128,56,195,0.25) 90%);
     padding: 22px 26px;
     margin-bottom: 18px;
     transition-duration: 300ms;
 }
-.card:hover, .post-card:hover, .blog-card:hover { transform: translateY(-4px); }
+.card:hover, .post-card:hover, .blog-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
 .card h3 { margin: 0 0 6px 0; font-weight: 500; font-size: 22px; color: #fff; }
 .card .meta { opacity: 0.65; font-size: 14px; margin-bottom: 10px; }
 .card p { margin: 0; font-size: 16px; opacity: 0.9; }
@@ -175,6 +182,7 @@ section.block {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
     font-size: 12px;
     font-weight: 500;
     color: #fff;
@@ -186,10 +194,17 @@ section.block {
 .tag-color-3 { background: linear-gradient(120deg, #c3388f, #dc7846); }
 .tag-color-4 { background: linear-gradient(120deg, #46c3dc, #8038c3); }
 
-.highlight {
+.highlight-box {
     border-radius: 15px;
     background: linear-gradient(240deg,#4678dc 10%, #8038c3 90%);
     padding: 18px 22px;
+}
+
+.post-page-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
 }
 
 /* --- blog post rendering --- */
@@ -203,13 +218,52 @@ section.block {
     border-radius: 6px;
     font-size: 15px;
 }
+
+/* Rouge wraps every fenced code block in <div class="language-xxx highlighter-rouge">
+   <div class="highlight"><pre class="highlight"><code>...code...</code></pre></div></div>.
+   We style that outer wrapper as the bordered block, and assets/js/code-blocks.js
+   inserts a small floating tab on the top border showing the language name. */
+.post-content .highlighter-rouge {
+    position: relative;
+    margin: 26px 0 22px 0;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0 0 12px 12px;
+}
+.post-content .highlighter-rouge .highlight { margin: 0; }
+.post-content .highlighter-rouge pre {
+    background: rgba(0,0,0,0.35);
+    border: none;
+    margin: 0;
+    padding: 28px 16px 16px 16px;
+    border-radius: 0 0 10px 10px;
+    overflow-x: auto;
+}
+.post-content .highlighter-rouge pre code { background: none; padding: 0; }
+
+/* fallback for a plain fenced block with no language / not run through rouge */
 .post-content pre {
     background: rgba(0,0,0,0.35);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     padding: 16px;
-    border-radius: 12px;
+    border-radius: 0 0 12px 12px;
     overflow-x: auto;
 }
 .post-content pre code { background: none; padding: 0; }
+
+.code-lang-tab {
+    position: absolute;
+    top: -2px;
+    left: 14px;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.65);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 2;
+}
 .post-content blockquote {
     border-left: 3px solid #8038c3;
     margin-left: 0;
