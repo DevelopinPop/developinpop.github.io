@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {% feed_meta %}
+</head>
+<body>
+
+{% include navbar.html %}
+
+<div class="wrap">
+    {{ content }}
+
+    <footer class="site-footer">
+        © {{ site.author }} {{ 'now' | date: "%Y" }}. All rights reserved.
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+title: YourName
+tagline: welcome to my silly website!
+description: >-
+  YourName's personal site — projects, portfolio, and a blog.
+author: YourName
+email: you@example.com
+
+# Change baseurl to "/REPO_NAME" if this is NOT a <username>.github.io repo,
+# e.g. baseurl: "/my-cool-site". Leave as "" for a <username>.github.io repo.
+baseurl: ""
+url: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
