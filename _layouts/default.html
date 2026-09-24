@@ -7,6 +7,17 @@
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% feed_meta %}
+    {% if page.mathjax %}
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    {% endif %}
 </head>
 <body>
 
@@ -20,7 +31,6 @@
     </footer>
 </div>
 
-<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/code-blocks.js' | relative_url }}"></script>
 </body>
 </html>

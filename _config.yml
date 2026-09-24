@@ -1,7 +1,7 @@
 title: YourName
 tagline: welcome to my silly website!
 description: >-
-  YourName's personal site — projects, contact, and a blog.
+  YourName's personal site — a blog and a way to get in touch.
 author: YourName
 email: you@example.com
 
@@ -14,6 +14,7 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  math_engine: mathjax
 
 permalink: /blog/:slug/
 

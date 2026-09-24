@@ -10,7 +10,7 @@ markdown-powered blog instead of hand-written HTML.
 - In `_config.yml`, change `title`, `tagline`, `description`, `author`, `email`.
 - If this repo is **not** named `<your-username>.github.io`, set
   `baseurl: "/your-repo-name"` in `_config.yml`.
-- Edit `index.md`, `projects/index.md`, and `contact/index.md` with your own content.
+- Edit `index.md` and `contact/index.md` with your own content.
 
 ## 2. Write a blog post
 
@@ -53,6 +53,27 @@ have it yet.)
    on every push.
 4. Your site will be live at `https://<your-username>.github.io[/repo-name]`.
 
+## 5. Math / LaTeX
+
+There's a scratch page at `/latex-test/` you can open to confirm math
+rendering works. To add math to any other page or post, put `mathjax: true`
+in its front matter, then write equations using kramdown's `$$...$$` syntax:
+
+```markdown
+---
+title: My Post
+mathjax: true
+---
+
+Inline: $$E = mc^2$$
+
+Display (on its own line, blank lines around it):
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+```
+
 ## Folder structure
 
 ```
@@ -61,8 +82,9 @@ _layouts/         page templates (default.html, post.html)
 _includes/        reusable snippets (navbar.html)
 _posts/           your blog posts — one markdown file each
 assets/css/       stylesheet
+assets/js/        code-block language tab script
 index.md          homepage
 blog/index.md     blog listing (auto-generated from _posts)
-projects/index.md projects page
 contact/index.md  contact page
+latex-test/index.md  scratch page for testing LaTeX rendering
 ```

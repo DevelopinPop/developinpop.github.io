@@ -24,11 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
         md: 'markdown', markdown: 'markdown'
     };
 
-    document.querySelectorAll('.post-content [class*="language-"]').forEach(function (block) {
+    // languages that shouldn't get a tab shown at all
+    var SKIP_LANGUAGES = ['plaintext', 'plain', 'text', 'txt', 'nohighlight'];
+
+    document.querySelectorAll('.post-content .highlighter-rouge').forEach(function (block) {
         var match = block.className.match(/language-([a-zA-Z0-9+#.\-]+)/);
-        if (!match) return;
+        if (!match) {
+            block.classList.add('no-lang-tab');
+            return;
+        }
 
         var slug = match[1].toLowerCase();
+
+        if (SKIP_LANGUAGES.indexOf(slug) !== -1) {
+            block.classList.add('no-lang-tab');
+            return;
+        }
+
         var label = LANGUAGE_NAMES[slug] || slug;
 
         var tab = document.createElement('div');

@@ -72,48 +72,12 @@ p { font-size: 18px; line-height: 1.6; }
     display: flex;
     align-items: center;
     gap: 40px;
-    padding: 40px 0 70px 0;
+    padding: 40px 0 20px 0;
     flex-wrap: wrap;
 }
 .hero-emoji { font-size: 90px; line-height: 1; }
 
-/* fixed vignette: sits in front of the hero text, but because it's pinned
-   to the viewport, the next sections (given a higher z-index below) slide
-   up and cover it as the page scrolls. Dark edge sits at the bottom of the
-   fade box (nearest the content below); it's hidden until the visitor
-   starts scrolling (see assets/js/main.js), then fades in. */
-.hero-fade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 65vh;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.8) 100%);
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 400ms ease;
-}
-.hero-fade.visible { opacity: 1; }
-
-.scroll-arrow {
-    position: absolute;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
-    z-index: 2;
-    font-size: 30px;
-    line-height: 1;
-    transition: transform 120ms ease, opacity 120ms ease;
-}
-.scroll-arrow:hover {
-    opacity: 1;
-    transform: translate(-50%, -10px);
-}
-
 section.block {
-    position: relative;
-    z-index: 2;
     padding: 30px 0;
 }
 
@@ -227,7 +191,7 @@ section.block {
     position: relative;
     margin: 26px 0 22px 0;
     border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 0 0 12px 12px;
+    border-radius: 12px;
 }
 .post-content .highlighter-rouge .highlight { margin: 0; }
 .post-content .highlighter-rouge pre {
@@ -235,17 +199,23 @@ section.block {
     border: none;
     margin: 0;
     padding: 28px 16px 16px 16px;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
     overflow-x: auto;
 }
 .post-content .highlighter-rouge pre code { background: none; padding: 0; }
+
+/* when there's no language tab (plaintext, or no language given), the code
+   starts right at the top instead of leaving room for the tab */
+.post-content .highlighter-rouge.no-lang-tab pre {
+    padding-top: 16px;
+}
 
 /* fallback for a plain fenced block with no language / not run through rouge */
 .post-content pre {
     background: rgba(0,0,0,0.35);
     border: 2px solid rgba(255, 255, 255, 0.25);
     padding: 16px;
-    border-radius: 0 0 12px 12px;
+    border-radius: 12px;
     overflow-x: auto;
 }
 .post-content pre code { background: none; padding: 0; }
