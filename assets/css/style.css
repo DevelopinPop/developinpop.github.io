@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+html { scroll-behavior: smooth; }
+
 * { box-sizing: border-box; }
 
 body {
@@ -66,30 +68,123 @@ p { font-size: 18px; line-height: 1.6; }
 .subtitle { opacity: .85; font-weight: 300; font-size: 22px; margin-top: 0; }
 
 .hero {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 40px;
-    padding: 40px 0 20px 0;
+    padding: 40px 0 70px 0;
     flex-wrap: wrap;
 }
 .hero-emoji { font-size: 90px; line-height: 1; }
 
-section.block { padding: 30px 0; }
+/* fixed dark vignette: sits in front of the hero text, but because it's
+   pinned to the viewport, the next sections (given a higher z-index below)
+   slide up and cover it as the page scrolls */
+.hero-fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65vh;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
 
-.card {
+.scroll-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 30px;
+    line-height: 1;
+    opacity: 0.8 !important;
+    animation: bounce 2s infinite;
+}
+.scroll-arrow:hover { opacity: 1 !important; }
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+section.block {
+    position: relative;
+    z-index: 2;
+    padding: 30px 0;
+}
+
+/* shared card shell (used by both the homepage post cards and the plain
+   project cards). Cards are plain <div>s with an invisible full-cover
+   <a class="stretched-link"> inside, rather than wrapping block content
+   in an <a> — kramdown/HTML treats <a> as inline, and block tags (h3,
+   div, p) nested inside it get mis-parsed, which is what caused the
+   stray "</p></a>" text to leak into the page. */
+.card, .post-card, .blog-card {
+    position: relative;
     border-radius: 20px;
     background: linear-gradient(240deg, rgba(70,120,220,0.25) 10%, rgba(128,56,195,0.25) 90%);
     padding: 22px 26px;
     margin-bottom: 18px;
     transition-duration: 300ms;
-    text-decoration: none;
-    color: inherit;
-    display: block;
 }
-.card:hover { transform: translateY(-4px); }
-.card h3 { margin: 0 0 6px 0; font-weight: 500; font-size: 22px; }
+.card:hover, .post-card:hover, .blog-card:hover { transform: translateY(-4px); }
+.card h3 { margin: 0 0 6px 0; font-weight: 500; font-size: 22px; color: #fff; }
 .card .meta { opacity: 0.65; font-size: 14px; margin-bottom: 10px; }
 .card p { margin: 0; font-size: 16px; opacity: 0.9; }
+
+.stretched-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0 !important;
+}
+
+/* homepage "latest posts" card: title • date on the left, tags on the right */
+.post-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.post-card-left {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.post-card-title { color: #fff; font-weight: 500; font-size: 18px; }
+.post-card-dot { opacity: 0.5; }
+.post-card-date { opacity: 0.65; font-size: 14px; }
+.post-card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* blog listing card: title left / date right on one row, tags on the next */
+.blog-card-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.blog-card-title { color: #fff; font-weight: 500; font-size: 22px; }
+.blog-card-date { opacity: 0.6; font-size: 14px; white-space: nowrap; }
+.blog-card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+.tag-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 1 !important;
+}
+.tag-color-0 { background: linear-gradient(120deg, #4678dc, #8038c3); }
+.tag-color-1 { background: linear-gradient(120deg, #dc4678, #c38038); }
+.tag-color-2 { background: linear-gradient(120deg, #38c38f, #4678dc); }
+.tag-color-3 { background: linear-gradient(120deg, #c3388f, #dc7846); }
+.tag-color-4 { background: linear-gradient(120deg, #46c3dc, #8038c3); }
 
 .highlight {
     border-radius: 15px;

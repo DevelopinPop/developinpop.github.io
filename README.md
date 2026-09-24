@@ -10,7 +10,7 @@ markdown-powered blog instead of hand-written HTML.
 - In `_config.yml`, change `title`, `tagline`, `description`, `author`, `email`.
 - If this repo is **not** named `<your-username>.github.io`, set
   `baseurl: "/your-repo-name"` in `_config.yml`.
-- Edit `index.md`, `projects/index.md`, and `portfolio/index.md` with your own content.
+- Edit `index.md`, `projects/index.md`, and `contact/index.md` with your own content.
 
 ## 2. Write a blog post
 
@@ -64,5 +64,5 @@ assets/css/       stylesheet
 index.md          homepage
 blog/index.md     blog listing (auto-generated from _posts)
 projects/index.md projects page
-portfolio/index.md portfolio page
+contact/index.md  contact page
 ```
