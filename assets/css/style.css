@@ -13,11 +13,12 @@ body {
     min-height: 100vh;
 }
 
-/* layered background: a diagonal, soft-edged light wedge sitting over three
-   large blurred glow orbs. Pinned to the viewport (position: fixed) so it
-   stays put while the page scrolls past/over it; each glow orb also gets its
-   own slower/faster vertical parallax offset (assets/js/bg-parallax.js) so
-   the layers drift at different rates rather than moving as one flat sheet. */
+/* layered background: three large blurred glow orbs, pinned to the viewport
+   and spaced far apart vertically so they read as rare, occasional sightings
+   as you scroll rather than a cluster all visible at once. Each one also
+   moves upward faster than the actual scroll distance (see the >1 speed
+   multipliers in assets/js/bg-parallax.js), so they drift past independently
+   rather than tracking the page 1:1. */
 .bg-layers {
     position: fixed;
     inset: 0;
@@ -29,36 +30,29 @@ body {
     position: absolute;
     border-radius: 50%;
     filter: blur(90px);
-    opacity: 0.55;
+    opacity: 0.4;
     will-change: transform;
 }
 .glow-teal {
     width: 460px;
     height: 460px;
     left: -140px;
-    top: 12vh;
+    top: 10vh;
     background: radial-gradient(circle, #2f9bd6 0%, rgba(47,155,214,0) 70%);
 }
 .glow-violet {
     width: 520px;
     height: 520px;
     right: -160px;
-    top: 32vh;
+    top: 90vh;
     background: radial-gradient(circle, #8038c3 0%, rgba(128,56,195,0) 70%);
 }
 .glow-indigo {
     width: 560px;
     height: 560px;
     left: 18%;
-    top: 68vh;
+    top: 180vh;
     background: radial-gradient(circle, #4c1d9a 0%, rgba(76,29,154,0) 70%);
-}
-.bg-wedge {
-    position: absolute;
-    inset: 0;
-    background: #fff;
-    -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 32%, transparent 48%);
-    mask-image: linear-gradient(100deg, #000 0%, #000 32%, transparent 48%);
 }
 
 /* everything else sits above the fixed background layer */

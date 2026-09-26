@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!glows.length) return;
 
     // one speed per glow, in the same order they appear in the DOM
-    // (teal, violet, indigo) — different values give each layer its own
-    // sense of depth as the page scrolls
-    var speeds = [0.06, 0.12, 0.18];
+    // (teal, violet, indigo). Values are >1 on purpose: each glow moves up
+    // faster than the page actually scrolls, so they drift past rather than
+    // just tracking the scroll position 1:1.
+    var speeds = [1.4, 1.8, 2.2];
 
     function update() {
         var y = window.scrollY;
