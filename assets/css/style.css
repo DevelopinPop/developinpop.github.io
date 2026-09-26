@@ -43,35 +43,62 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    filter: blur(8px);
+    filter: blur(2px);
     opacity: 0.5;
 }
 .glow-teal {
-    width: 1100px;
-    height: 1100px;
+    width: 720px;
+    height: 720px;
     left: -400px;
     top: 6vh;
 }
 .glow-teal .glow-blur {
-    background: radial-gradient(circle, #2f9bd6 0%, rgba(47,155,214,0.6) 50%, rgba(47,155,214,0) 100%);
+    background: radial-gradient(circle,
+        rgba(47,155,214,0.9) 0%,
+        rgba(47,155,214,0.75) 12%,
+        rgba(47,155,214,0.55) 26%,
+        rgba(47,155,214,0.38) 40%,
+        rgba(47,155,214,0.24) 55%,
+        rgba(47,155,214,0.13) 68%,
+        rgba(47,155,214,0.05) 82%,
+        rgba(47,155,214,0.01) 92%,
+        rgba(47,155,214,0) 100%);
 }
 .glow-violet {
-    width: 1250px;
-    height: 1250px;
+    width: 800px;
+    height: 800px;
     right: -450px;
     top: 86vh;
 }
 .glow-violet .glow-blur {
-    background: radial-gradient(circle, #8038c3 0%, rgba(128,56,195,0.6) 50%, rgba(128,56,195,0) 100%);
+    background: radial-gradient(circle,
+        rgba(128,56,195,0.9) 0%,
+        rgba(128,56,195,0.75) 12%,
+        rgba(128,56,195,0.55) 26%,
+        rgba(128,56,195,0.38) 40%,
+        rgba(128,56,195,0.24) 55%,
+        rgba(128,56,195,0.13) 68%,
+        rgba(128,56,195,0.05) 82%,
+        rgba(128,56,195,0.01) 92%,
+        rgba(128,56,195,0) 100%);
 }
 .glow-indigo {
-    width: 1300px;
-    height: 1300px;
+    width: 1250px;
+    height: 1250px;
     left: 4%;
     top: 176vh;
 }
 .glow-indigo .glow-blur {
-    background: radial-gradient(circle, #4c1d9a 0%, rgba(76,29,154,0.6) 50%, rgba(76,29,154,0) 100%);
+    background: radial-gradient(circle,
+        rgba(76,29,154,0.9) 0%,
+        rgba(76,29,154,0.75) 12%,
+        rgba(76,29,154,0.55) 26%,
+        rgba(76,29,154,0.38) 40%,
+        rgba(76,29,154,0.24) 55%,
+        rgba(76,29,154,0.13) 68%,
+        rgba(76,29,154,0.05) 82%,
+        rgba(76,29,154,0.01) 92%,
+        rgba(76,29,154,0) 100%);
 }
 
 /* everything else sits above the fixed background layer */
