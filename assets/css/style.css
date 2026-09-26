@@ -43,8 +43,8 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    filter: blur(2px);
-    opacity: 0.5;
+    filter: blur(200px);
+    opacity: 0.8;
 }
 .glow-teal {
     width: 720px;
