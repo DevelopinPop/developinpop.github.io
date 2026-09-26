@@ -7,7 +7,7 @@ tags: [io]
 
 Today, I want to ramble about my favourite Informatics Olympiad trick!
 
-We define $$|x|$$ as the absolute value of $$x$$. That is, $$|x| = max(x, -x)$$.
+We define $$ \|x\| $$ as the absolute value of $$x$$. That is, $$|x| = max(x, -x)$$.
 
 ## Classic Problem 1
 
