@@ -1,4 +1,4 @@
-# YourName's site (Jekyll)
+# DevelopinPop's site (Jekyll)
 
 A personal site built with [Jekyll](https://jekyllrb.com/), styled after
 [developinpop.github.io](https://developinpop.github.io/) — same gradient

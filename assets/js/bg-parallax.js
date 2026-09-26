@@ -8,14 +8,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // just tracking the scroll position 1:1.
     var speeds = [1.4, 1.8, 2.2];
 
-    function update() {
+    var ticking = false;
+
+    function apply() {
         var y = window.scrollY;
         glows.forEach(function (glow, i) {
             var speed = speeds[i % speeds.length];
-            glow.style.transform = 'translateY(' + (-y * speed) + 'px)';
+            // translate3d (not translateY) so the browser promotes this to
+            // its own GPU layer instead of repainting on every scroll tick
+            glow.style.transform = 'translate3d(0, ' + (-y * speed) + 'px, 0)';
         });
+        ticking = false;
     }
 
-    window.addEventListener('scroll', update, { passive: true });
-    update();
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(apply);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    apply();
 });

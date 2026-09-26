@@ -15,7 +15,7 @@ title: Home
 
 ## > who am i?
 
-I'm {{ site.author }}, a (put your thing here) who likes making stuff and putting it online.
+I'm Melody, and I like doing silly stuff.
 
 I hope to do a bunch of cool things and write about them here!
 
