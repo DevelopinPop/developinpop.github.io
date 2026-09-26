@@ -47,27 +47,27 @@ body {
     opacity: 0.5;
 }
 .glow-teal {
-    width: 720px;
-    height: 720px;
-    left: -260px;
+    width: 1100px;
+    height: 1100px;
+    left: -400px;
     top: 6vh;
 }
 .glow-teal .glow-blur {
     background: radial-gradient(circle, #2f9bd6 0%, rgba(47,155,214,0.6) 50%, rgba(47,155,214,0) 100%);
 }
 .glow-violet {
-    width: 800px;
-    height: 800px;
-    right: -300px;
+    width: 1250px;
+    height: 1250px;
+    right: -450px;
     top: 86vh;
 }
 .glow-violet .glow-blur {
     background: radial-gradient(circle, #8038c3 0%, rgba(128,56,195,0.6) 50%, rgba(128,56,195,0) 100%);
 }
 .glow-indigo {
-    width: 840px;
-    height: 840px;
-    left: 12%;
+    width: 1300px;
+    height: 1300px;
+    left: 4%;
     top: 176vh;
 }
 .glow-indigo .glow-blur {
