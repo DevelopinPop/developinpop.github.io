@@ -18,3 +18,11 @@ This problem can be solved by finding the median $$A_i$$ and finding $$F(A_i)$$.
 However, consider the alternative solution:
 
 Consider that $$\|A_i-x\|$$ is convex for any $$i$$. That is, the gradient is non-decreasing with $$x$$. In IO, since we're mainly working with integers, we can say that a function $$F(x)$$ is convex if $$F(x+1)-F(x) \le F(x+2) - F(x+1)$$ for all $$x$$ within the search space. 
+
+The sum of any number of convex functions is also convex. 
+
+When it's convex, one half of $F(x)$ is entirely sloping down and the other half is sloping up. This is **monotonous**.
+
+How do you find the turning point?
+
+Consider querying a point.
