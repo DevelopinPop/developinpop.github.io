@@ -4,7 +4,7 @@ title: Home
 ---
 
 <section class="hero">
-    <div class="hero-emoji">👋</div>
+    <div class="hero-emoji">🫧</div>
     <div>
         <h1>hi, i'm <strong>{{ site.author }}!</strong></h1>
         <p class="subtitle">{{ site.tagline }}</p>
@@ -34,13 +34,13 @@ I hope to do a bunch of cool things and write about them here!
         <span class="post-card-date">{{ post.date | date: "%B %-d, %Y" }}</span>
     </div>
     <div class="post-card-tags">
-        {% for tag in post.tags %}<span class="tag-pill tag-color-{{ tag | size | modulo: 5 }}">{{ tag }}</span>{% endfor %}
+        {% for tag in post.tags %}<span class="tag-pill tag-color-{{ tag | size | modulo: 5 }}">#{{ tag }}</span>{% endfor %}
     </div>
 </div>
 {% else %}
 <p class="loading">no posts yet — add one to <code>_posts/</code>!</p>
 {% endfor %}
 
-[see all posts →]({{ '/blog/' | relative_url }})
+[see more →]({{ '/blog/' | relative_url }})
 
 </section>

@@ -12,7 +12,13 @@
         window.MathJax = {
             tex: {
                 inlineMath: [['\\(', '\\)']],
-                displayMath: [['\\[', '\\]']]
+                displayMath: [['\\[', '\\]']],
+                // by default \| renders as ‖ (a double vertical line, used for
+                // norms); this redefines it to render as a single line (\vert)
+                // instead, so $$\|x\|$$ shows |x| rather than ‖x‖
+                macros: {
+                    '|': ['\\vert']
+                }
             }
         };
     </script>

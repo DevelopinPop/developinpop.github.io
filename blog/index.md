@@ -17,7 +17,7 @@ permalink: /blog/
         <span class="blog-card-date">{{ post.date | date: "%B %-d, %Y" }}</span>
     </div>
     <div class="blog-card-tags">
-        {% for tag in post.tags %}<span class="tag-pill tag-color-{{ tag | size | modulo: 5 }}">{{ tag }}</span>{% endfor %}
+        {% for tag in post.tags %}<span class="tag-pill tag-color-{{ tag | size | modulo: 5 }}">#{{ tag }}</span>{% endfor %}
     </div>
 </div>
 {% else %}
